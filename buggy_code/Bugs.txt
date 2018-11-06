@@ -1,0 +1,27 @@
+Bug 1:
+Cambiar: player.value = jsonObject[constants.market_value]; en player.js
+por: let valueM = (a) => parseFloat(a.substring(1, a.length - 1)) * 1000000;
+        let valueK = (a) => parseFloat(a.substring(1, a.length - 1)) * 1000;
+        let value = (a) => {
+            if (a.substring(a.length - 1, a.length) === 'M') {
+                let i = valueM(a);
+                return i;
+            } else if (a.substring(a.length - 1, a.length) === 'K') {
+                let i = valueK(a);
+                return i;
+            }
+        };
+        player.value = value(jsonObject[constants.market_value]);
+
+así se cambia la variable string a una variable numérica y se diferencia dependiendo si es millón o mil.
+
+Bug 2:
+Cambiar: return this._isBack; en player
+por: return this._isForward; en player
+
+Bug 3:
+Eliminar: else if (!isMidfielder(preferred_positions) 
+			&& !isBack(preferred_positions) 
+			&& !isForward(preferred_positions)) {
+		return true;
+	}
