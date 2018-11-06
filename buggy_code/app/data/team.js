@@ -11,6 +11,7 @@ class Team {
         this.teamName = teamName;
         this.listPlayers = new Array();
         this.teamValue = 0;
+
     }
 
     /**
@@ -88,7 +89,15 @@ class Team {
      * @returns {Number} representing the overall quality of the team
      */
     getTeamOverallQuality(){
-        return 0;
+        let OverallQuality=0;
+        let TeamOverallQuality=0;
+        let cont=0;
+        for(let player of this.listPlayers){
+            OverallQuality=OverallQuality+player.overall;
+            cont++;
+        }
+        TeamOverallQuality=(OverallQuality/cont);
+        return TeamOverallQuality;
     }
 
     /**
