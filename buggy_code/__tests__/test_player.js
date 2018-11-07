@@ -7,7 +7,9 @@ let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 const cristiano=arrayPlayers[0];
 const messi=arrayPlayers[1];
 const neymar=arrayPlayers[2];
-const Keylor=arrayPlayers[3];
+const keylor=arrayPlayers[3];
+const ramos=arrayPlayers[4];
+const modric=arrayPlayers[5];
 //Tests
 test('TEAM TEST "PLAYER" FORWARD',()=>{
 
@@ -18,19 +20,19 @@ test('TEAM TEST "PLAYER" FORWARD',()=>{
 });
 
 test('TEAM TEST "PLAYER" GOALKEEPER',()=>{
-    expect(Keylor.isGoalKeeper()).toBe(true);
+    expect(keylor.isGoalKeeper()).toBe(true);
     expect(cristiano.isGoalKeeper()).toBe(false);
 
 });
 
 test('TEAM TEST "PLAYER" BACK',()=>{
-
+    expect(ramos.isBack()).toBe(true);
     expect(cristiano.isBack()).toBe(false);
 
 });
 
 test('TEAM TEST "PLAYER" MIDFIELDER',()=>{
-
+    expect(messi.isBack()).toBe(false);
     expect(cristiano.isMidfielder()).toBe(true);
 
 });
