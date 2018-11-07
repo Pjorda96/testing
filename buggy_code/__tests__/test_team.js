@@ -38,7 +38,7 @@ let players = [{
     "overall": 93,
     "value": 105000000
 }]
-//team1.addPlayer(neymar);
+
 //Tests
 test('TEAM TEST NAME',()=>{
 
@@ -53,7 +53,7 @@ test('TEAM TEST VALUE',()=>{
 
 test('TEAM TEST PLAYERS',()=>{
 
-    expect(team1.getPlayers()).toBe(players);
+    expect(team1.getPlayers()).toEqual(players);
 
 });
 
