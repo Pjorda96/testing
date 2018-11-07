@@ -1,3 +1,4 @@
 .idea/*
 __MACOSX/*
 buggy_code/node_modules/*
+buggy_code/coverage/*
