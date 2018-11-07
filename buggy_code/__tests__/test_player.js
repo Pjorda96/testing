@@ -1,13 +1,13 @@
 //Importar ficheros
 const extractDataFromRawJSON = require('../app/data/json_reader').extractDataFromRawJSON;
 const readJSONData = require('../app/data/json_reader').readJSONData;
-let jsonObjects = readJSONData('./data/sample.json');
+let jsonObjects = readJSONData('./data/sample1.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 
 const cristiano=arrayPlayers[0];
 const messi=arrayPlayers[1];
 const neymar=arrayPlayers[2];
-const Keylor=arrayPlayers[3];
+const keylor=arrayPlayers[3];
 //Tests
 test('TEAM TEST "PLAYER" FORWARD',()=>{
 
@@ -18,7 +18,7 @@ test('TEAM TEST "PLAYER" FORWARD',()=>{
 });
 
 test('TEAM TEST "PLAYER" GOALKEEPER',()=>{
-    expect(Keylor.isGoalKeeper()).toBe(true);
+    expect(keylor.isGoalKeeper()).toBe(true);
     expect(cristiano.isGoalKeeper()).toBe(false);
 
 });

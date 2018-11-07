@@ -12,6 +12,32 @@ let messi = arrayPlayers[1];
 let neymar = arrayPlayers[2];
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
+
+let players = [{
+    "_isBack": false,
+    "_isForward": true,
+    "_isGoalKeeper": false,
+    "_isMidfielder": true,
+    "age": 32,
+    "club": "Real Madrid CF",
+    "country": "Portugal",
+    "id": 20801,
+    "name": "Cristiano Ronaldo",
+    "overall": 94,
+    "value": 95500000
+}, {
+    "_isBack": false,
+    "_isForward": false,
+    "_isGoalKeeper": false,
+    "_isMidfielder": true,
+    "age": 30,
+    "club": "FC Barcelona",
+    "country": "Argentina",
+    "id": 158023,
+    "name": "L. Messi",
+    "overall": 93,
+    "value": 105000000
+}]
 //team1.addPlayer(neymar);
 //Tests
 test('TEAM TEST NAME',()=>{
@@ -27,7 +53,7 @@ test('TEAM TEST VALUE',()=>{
 
 test('TEAM TEST PLAYERS',()=>{
 
-    expect(team1.getPlayers()).toBe('h');
+    expect(team1.getPlayers()).toBe(players);
 
 });
 
