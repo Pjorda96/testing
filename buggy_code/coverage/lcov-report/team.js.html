@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.19% </span>
+        <span class="strong">31.58% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/69</span>
+        <span class='fraction'>24/76</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">16.67% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>3/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">35% </span>
+        <span class="strong">40% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/20</span>
+        <span class='fraction'>8/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.24% </span>
+        <span class="strong">32.88% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/66</span>
+        <span class='fraction'>24/73</span>
       </div>
     </div>
   </div>
@@ -255,7 +255,16 @@
 210
 211
 212
-213</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,13 +284,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -291,7 +293,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -345,6 +355,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -480,6 +498,7 @@ class Team {
         this.teamName = teamName;
         this.listPlayers = new Array();
         this.teamValue = 0;
+&nbsp;
     }
 &nbsp;
     /**
@@ -502,8 +521,8 @@ class Team {
      * Retrieves the players that have been signed by the team
      * @returns {Array&lt;Player&gt;} An array of Player objects that represent the players that play for the team
      */
-<span class="fstat-no" title="function not covered" >    ge</span>tPlayers(){
-<span class="cstat-no" title="statement not covered" >        return this.listPlayers.slice();</span>
+    getPlayers(){
+        return this.listPlayers.slice();
     }
 &nbsp;
     /**
@@ -557,7 +576,15 @@ class Team {
      * @returns {Number} representing the overall quality of the team
      */
     getTeamOverallQuality(){
-        return 0;
+        let OverallQuality=0;
+        let TeamOverallQuality=0;
+        let cont=0;
+        for(let player of this.listPlayers){
+            OverallQuality=OverallQuality+player.overall;
+            cont++;
+        }
+        TeamOverallQuality=(OverallQuality/cont);
+        return TeamOverallQuality;
     }
 &nbsp;
     /**
@@ -685,7 +712,7 @@ exports.Team = Team;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 05 2018 12:39:11 GMT+0300 (Hora estándar de Rusia TZ 2)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 11:09:01 GMT+0300 (Hora estándar de Rusia TZ 2)
 </div>
 </div>
 <script src="prettify.js"></script>

@@ -24,12 +24,13 @@ test('TEAM TEST VALUE',()=>{
     expect(team1.getTeamValue()).toBe(200500000);
 
 });
-/*
+
 test('TEAM TEST PLAYERS',()=>{
 
     expect(team1.getPlayers()).toBe('h');
 
-});*/
+});
+
 test('TEAM TEST HAS_PLAYER',()=>{
 
     expect(team1.hasPlayer(neymar)).toBe(false);
