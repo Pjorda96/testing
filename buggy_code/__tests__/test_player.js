@@ -1,7 +1,7 @@
 //Importar ficheros
 const extractDataFromRawJSON = require('../app/data/json_reader').extractDataFromRawJSON;
 const readJSONData = require('../app/data/json_reader').readJSONData;
-let jsonObjects = readJSONData('./data/sample.json');
+let jsonObjects = readJSONData('./data/sample1.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 
 const cristiano=arrayPlayers[0];
