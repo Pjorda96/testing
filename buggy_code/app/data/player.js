@@ -38,6 +38,7 @@ class Player{
                 let i = valueM(a);
                 return i;
             } else if (a.substring(a.length - 1, a.length) === 'K') {
+                console.log('Entra');
                 let i = valueK(a);
                 return i;
             }

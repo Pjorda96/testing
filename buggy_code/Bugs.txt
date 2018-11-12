@@ -39,3 +39,8 @@ por: let OverallQuality=0;
         return TeamOverallQuality;
 
 Bug 5:
+
+
+
+
+Nota: En el test de player.js pasa por la línea 40 pero no lo indica correctamente, el coverage es de 100%
