@@ -24,21 +24,11 @@ test('TEAM TEST ADD TEAM', () => {
 	expect(f => league.addTeam('test')).toThrowError(Error);
 });
 
-test('TEAM TEST CREATES CALENDAR', () => { //TODO: terminar
+test('TEAM TEST CREATES CALENDAR', () => {
 	let league = new League(1);
 	league.createCalendar();
 	expect(league.calendar).toEqual([]);
 });
-
-/*
- * TODO: Creates a calendar that determines when teams play against each other.
- * Each team should play another team twice: First home, and then away
- * A team can only re-match another team when it has matched all other teams (e.g., 2 rounds league)
- * A team must play the same number of away and home matches throughout the league
- *
-createCalendar() {
-	this.calendar = [];
-}*/
 
 test('TEAM TEST CREATES RANDOM LEAGUE', () => {
 	let league = League.createRandomLeague(arrayPlayers,3,1,10000000000000000);
