@@ -1,11 +1,11 @@
 //Importar ficheros
 const extractDataFromRawJSON = require('../app/data/json_reader').extractDataFromRawJSON;
 const readJSONData = require('../app/data/json_reader').readJSONData;
-const Teams = require('../app/data/team').Team;
+const Team = require('../app/data/team').Team;
 let jsonObjects = readJSONData('./data/sample.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 
-let team1 = new Teams('team1');
+let team1 = new Team('team1');
 
 let cristiano = arrayPlayers[0];
 let messi = arrayPlayers[1];
@@ -42,7 +42,7 @@ let players = [{
 //Tests
 test('TEAM TEST CONSTRUCTOR', () => {
 
-	let team2 = new Teams('test');
+	let team2 = new Team('test');
 	expect(team2.teamName).toBe('test');
 	expect(team2.listPlayers).toEqual([]);
 	expect(team2.teamValue).toBe(0);
