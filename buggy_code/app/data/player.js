@@ -147,7 +147,7 @@ class Player{
      * @returns {Boolean} true if both represent the same player, false otherwise
      */
     equals(obj){
-        if(typeof(obj) == typeof(this) && this.getID() == obj.getID()){
+        if(typeof(obj) === typeof(this) && this.getID() === obj.getID()){
             return true;
         } 
         return false;
