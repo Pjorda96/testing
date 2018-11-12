@@ -3,13 +3,17 @@ const extractDataFromRawJSON = require('../app/data/json_reader').extractDataFro
 const readJSONData = require('../app/data/json_reader').readJSONData;
 const Team = require('../app/data/team').Team;
 let jsonObjects = readJSONData('./data/sample.json');
+let jsonObjects1 = readJSONData('./data/sample1.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
+let arrayPlayers1 = extractDataFromRawJSON(jsonObjects1);
 
 let team1 = new Team('team1');
 
 let cristiano = arrayPlayers[0];
 let messi = arrayPlayers[1];
 let neymar = arrayPlayers[2];
+let keylor = arrayPlayers1[3];
+let ramos = arrayPlayers1[4];
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
 
@@ -79,36 +83,31 @@ test('TEAM TEST NUMBER OF PLAYERS', () => {
 
 });
 
-/**
- * Adds a new player to the team
- * @param {Player} player The player to be added
- * @returns {Boolean} true in case that the player was successfully 
- * added to the team, false otherwise
- *
-addPlayer(player) {
-    if (!this.hasPlayer(player)) {
-        this.listPlayers.push(player);
-        this.teamValue += player.getValue();
-        return true;
-    }
-    return false;
-}*/
-
 test('TEAM TEST ADD PLAYER', () => {
 
 	expect(team1.addPlayer(neymar)).toBe(true);
-	expect(f => addPlayer('./data/team.js')).toThrowError(Error);
+	expect(f => addPlayer(neymar)).toThrowError(Error);
 
 });
 
-/*test('TEAM TEST ADD PLAYERS', () => {
+test('TEAM TEST ADD PLAYERS', () => {
+	team1.addPlayers([
+		keylor,
+		ramos
+	]);
 
-    //expect(team1.getTeamOverallQuality()).toBe(93.5);
+	expect(team1.listPlayers[3].name).toBe('Keylor Navas');
+	expect(team1.listPlayers[4].name).toBe('Ramos');
+	
+    expect(f => addPlayer([
+		messi,
+		keylor
+	])).toThrowError(Error);
 
-});*/
+});
 
-test('TEAM TEST GET TEAM-QUALITY', () => {
+/*test('TEAM TEST GET TEAM-QUALITY', () => {
 
 	expect(team1.getTeamOverallQuality()).toBe(93.5);
 
-});
+});*/
