@@ -97,7 +97,8 @@ class Team {
 			cont++;
 		}
 		TeamOverallQuality = (OverallQuality / cont);
-		return TeamOverallQuality;
+		console.log('OverallQuality'+OverallQuality+' cont'+cont);
+        return TeamOverallQuality;
 	}
 
 	/**

@@ -116,8 +116,8 @@ test('TEAM TEST ADD PLAYERS', () => {
 
 });
 
-/*test('TEAM TEST GET TEAM-QUALITY', () => {
+test('TEAM TEST GET TEAM-QUALITY', () => {
 
-	expect(team1.getTeamOverallQuality()).toBe(93.5);
+	expect(team1.getTeamOverallQuality()).toBe(93);
 
-});*/
+});
