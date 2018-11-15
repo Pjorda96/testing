@@ -38,8 +38,11 @@ por: let OverallQuality=0;
         TeamOverallQuality=(OverallQuality/cont);
         return TeamOverallQuality;
 
-Bug 5:
 
+
+Bug 6:
+Cambiar: randomIndex en el método getRandomTeamTactic de team.js 
+por: let randomIndex = Math.floor(Math.random() * availableTactics.length);
 
 
 
