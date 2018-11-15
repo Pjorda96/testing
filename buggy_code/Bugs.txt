@@ -50,6 +50,10 @@ Bug 6:
 Cambiar: randomIndex en el método getRandomTeamTactic de team.js
 por: let randomIndex = Math.floor(Math.random() * availableTactics.length);
 
+Bug 7:
+Cambiar: any en _parseTactic en team.js
+por: some
+
 
 
 Nota: En el test de player.js pasa por la línea 40 pero no lo indica correctamente, el coverage es de 100%

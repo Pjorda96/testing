@@ -166,20 +166,11 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 
 });
 
-/**
- * Static method that gets a random valid tactic for a team: 
- * 3-4-3, 3-5-2, 3-6-1, 4-3-3, 4-4-2, 4-5-1, 5-3-2
- * @returns {String} representing a tactic in the format 
- * numberBackers-numberMidFielders-numberForwarders
- *
-static getRandomTeamTactic() {
-	let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
-	let randomIndex = Math.random() * availableTactics.length;
-	return availableTactics[randomIndex];
-}*/
 
-test('TEAM TEST createRandomTeam', () => {
+
+
+/* test('TEAM TEST createRandomTeam', () => {
 
     let random_team=team1.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
     expect(random_team.).;
-});
+}); */
