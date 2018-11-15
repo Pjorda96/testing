@@ -164,6 +164,6 @@ static getRandomTeamTactic() {
 
 test('TEAM TEST createRandomTeam', () => {
 
-    let random_team=team1.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
-    expect(random_team.).;
+    let random_team=Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
+    expect(random_team.getTeamValue()).toBeCloseTo(1000000000,9);
 });

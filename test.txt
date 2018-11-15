@@ -1,6 +1,5 @@
 npm install --save-dev jest
 
 node node_modules\jest\bin\jest.js
-    node node_modules\jest\bin\jest.js --coverage
+node node_modules\jest\bin\jest.js --coverage
 
- expect(fr.getNumerator()).toBe(2);
