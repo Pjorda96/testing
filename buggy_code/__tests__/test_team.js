@@ -93,26 +93,21 @@ test('TEAM TEST ADD PLAYER', () => {
 
 test('TEAM TEST ADD PLAYERS', () => {
 	let test_team = new Team('team');
-	let players = [];
 	let player = new Player(96);
 	let player2 = new Player(25);
-	players.push(player);
-	players.push(player2);
 
 	test_team.addPlayers([
 		player,
 		player2
 	]);
 
-	console.log(test_team);
+	expect(test_team.listPlayers[0].id).toBe(96);
+	expect(test_team.listPlayers[1].id).toBe(25);
 
-	/* expect(team1.listPlayers[3].name).toBe('Keylor Navas');
-	expect(team1.listPlayers[4].name).toBe('Ramos');
-	
-    expect(f => addPlayer([
-		messi,
-		keylor
-	])).toThrowError(Error); */
+	expect(f => addPlayer([
+		player,
+		player2
+	])).toThrowError(Error);
 
 });
 
@@ -121,3 +116,46 @@ test('TEAM TEST GET TEAM-QUALITY', () => {
 	expect(team1.getTeamOverallQuality()).toBe(93);
 
 });
+
+test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
+	let tactics = [
+		'3-4-3',
+		'3-5-2',
+		'3-6-1',
+		'4-3-3',
+		'4-4-2',
+		'4-5-1',
+		'5-3-2'
+	];
+
+	expect(tactics[0]).toBe('3-4-3');
+	expect(tactics[1]).toBe('3-5-2');
+	expect(tactics[2]).toBe('3-6-1');
+	expect(tactics[3]).toBe('4-3-3');
+	expect(tactics[4]).toBe('4-4-2');
+	expect(tactics[5]).toBe('4-5-1');
+	expect(tactics[6]).toBe('5-3-2');
+
+	expect(team1.getRandomTeamTactic()).toBe(
+		tactics[0] ||
+		tactics[1] ||
+		tactics[2] ||
+		tactics[3] ||
+		tactics[4] ||
+		tactics[5] ||
+		tactics[6]
+	);
+
+});
+
+/**
+ * Static method that gets a random valid tactic for a team: 
+ * 3-4-3, 3-5-2, 3-6-1, 4-3-3, 4-4-2, 4-5-1, 5-3-2
+ * @returns {String} representing a tactic in the format 
+ * numberBackers-numberMidFielders-numberForwarders
+ *
+static getRandomTeamTactic() {
+	let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
+	let randomIndex = Math.random() * availableTactics.length;
+	return availableTactics[randomIndex];
+}*/

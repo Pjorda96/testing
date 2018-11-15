@@ -93,13 +93,11 @@ class Team {
 		let TeamOverallQuality = 0;
 		let cont = 0;
 		for (let player of this.listPlayers) {
-			console.log(player);
 			OverallQuality = OverallQuality + player.overall;
 			cont++;
 		}
 		TeamOverallQuality = (OverallQuality / cont);
 
-		console.log(OverallQuality, cont);
 		return TeamOverallQuality;
 	}
 
