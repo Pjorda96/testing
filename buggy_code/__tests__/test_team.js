@@ -12,13 +12,19 @@ let jsonObjectsFifa = extractDataFromRawJSON(jsonObjects2);
 
 let team1 = new Team('team1');
 
+
+
 let cristiano = arrayPlayers[0];
 let messi = arrayPlayers[1];
 let neymar = arrayPlayers[2];
 let keylor = arrayPlayers1[3];
 let ramos = arrayPlayers1[4];
+let bale = arrayPlayers1[8];
+let suarez = arrayPlayers1[9];
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
+
+let delanteros_medios=[];
 
 let players = [{
 	"_isBack": false,
@@ -197,7 +203,11 @@ static _parseTactic(tactic) {
 }*/
 
 
-test('TEAM TEST createRandomTeam', () => {
+test('TEAM TEST CREATE RANDOM TEAM', () => {
 
-    expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeCloseTo(1000000000,9);
+    expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeLessThan(1000000000);
+	expect(Team.createRandomTeam(arrayPlayers,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
+
 });
+
+
