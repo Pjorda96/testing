@@ -212,6 +212,9 @@ class Team {
 
                 newTeam.addPlayers(selectedPlayers);
             }
+            if(newTeam.getTeamValue()<=teamValue){
+                return newTeam;
+            }
 
 
         }
