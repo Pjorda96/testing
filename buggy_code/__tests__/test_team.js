@@ -155,7 +155,34 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 	}
 });
 
+test('TEAM TEST PARSE TACTICS', () => {
+	
+});
 
+/**
+ * Static method that gets a tactic and parses it to extract the number of defenders, midfielders, and attackers
+ * @param {String} tactic A tactic in string format numberBackers-numberMifielders-numberForwarders
+ * @returns {Array<Number>} An array of numbers with 3 positions: numberBackers, numberMidfielders, numberForwarders
+ * @throws {Error} In case that the tactic is not specified in the format numberBackers-numberMidfielders-numberForwarders
+ * @throws {Error} In case that the specified tactic employs more than 10 (+1) players
+ *
+static _parseTactic(tactic) {
+	//Split the string using the - character
+	let playersPerPosition = tactic.split('-');
+	//If more or less than 3 positions, the tactic is in incorrect format
+	if (playersPerPosition.length !== 3) {
+		throw Error('Tactics may only take 3 positions and got ' + playersPerPosition + ' with ' +
+			playersPerPosition.length + ' elements');
+	}
+	//Parse tactic elements to numbers
+	playersPerPosition = playersPerPosition.map(elem => parseInt(elem));
+	//If any of the elements is not an integer, then raise error
+	if (playersPerPosition.some(n => isNaN(n))) {
+		throw Error('One of the specified positions is not a number');
+	}
+
+	return playersPerPosition;
+}*/
 
 
 /* test('TEAM TEST createRandomTeam', () => {
