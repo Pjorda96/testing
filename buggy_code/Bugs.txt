@@ -38,10 +38,16 @@ por: let OverallQuality=0;
         TeamOverallQuality=(OverallQuality/cont);
         return TeamOverallQuality;
 
+Bug 5:
+Añadir:
+       if(newTeam.getTeamValue()<=teamValue){
+         return newTeam;
+       }
+A: Funcion createRandomTeam
 
 
 Bug 6:
-Cambiar: randomIndex en el método getRandomTeamTactic de team.js 
+Cambiar: randomIndex en el método getRandomTeamTactic de team.js
 por: let randomIndex = Math.floor(Math.random() * availableTactics.length);
 
 

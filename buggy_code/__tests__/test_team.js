@@ -5,8 +5,10 @@ const Team = require('../app/data/team').Team;
 const Player = require('../app/data/player').Player;
 let jsonObjects = readJSONData('./data/sample.json');
 let jsonObjects1 = readJSONData('./data/sample1.json');
+let jsonObjects2= readJSONData('./data/fifa_data.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 let arrayPlayers1 = extractDataFromRawJSON(jsonObjects1);
+let jsonObjectsFifa = extractDataFromRawJSON(jsonObjects2);
 
 let team1 = new Team('team1');
 
@@ -175,3 +177,9 @@ static getRandomTeamTactic() {
 	let randomIndex = Math.random() * availableTactics.length;
 	return availableTactics[randomIndex];
 }*/
+
+test('TEAM TEST createRandomTeam', () => {
+
+    let random_team=team1.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
+    expect(random_team.).;
+});
