@@ -143,8 +143,6 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		}
 	}
 
-	console.log(myMap);
-
 	for (let tac of tactics) {
 		let flag = undefined;
 		if (myMap.has(tac) && myMap.get(tac) > 0) {
