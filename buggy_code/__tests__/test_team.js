@@ -15,8 +15,11 @@ let messi = arrayPlayers[1];
 let neymar = arrayPlayers[2];
 let keylor = arrayPlayers1[3];
 let ramos = arrayPlayers1[4];
+let modric = arrayPlayers1[5];
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
+
+let array_players=[];
 
 let players = [{
 	"_isBack": false,
@@ -119,5 +122,11 @@ test('TEAM TEST ADD PLAYERS', () => {
 test('TEAM TEST GET TEAM-QUALITY', () => {
 
 	expect(team1.getTeamOverallQuality()).toBe(93);
+
+});
+
+test('TEAM TEST createRandomTeam', () => {
+
+    let random_team = team1.createRandomTeam()
 
 });
