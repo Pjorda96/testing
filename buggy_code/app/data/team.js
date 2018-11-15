@@ -132,6 +132,13 @@ class Team {
         if (playersPerPosition.some(n => isNaN(n))) {
             throw Error('One of the specified positions is not a number');
         }
+        //If number of players is not 10 (+ GK)
+        //Last method bc need only 3 number elements in playersPerPosition
+        if (playersPerPosition.reduce((x, y) => {
+            return x + y;
+        }, 0) != 10) {
+            throw Error('Only can play 11 players');
+        }
 
         return playersPerPosition;
     }

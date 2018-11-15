@@ -156,14 +156,25 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 });
 
 test('TEAM TEST PARSE TACTICS', () => {
-	
+	expect(Team._parseTactic('4-3-3')).toEqual([4,3,3]);
+
+	expect(() => Team._parseTactic('S-3-3')).toThrowError(Error);
+	expect(() => Team._parseTactic('3-S-3')).toThrowError(Error);
+	expect(() => Team._parseTactic('5-3-S')).toThrowError(Error);
+	expect(() => Team._parseTactic('5-3')).toThrowError(Error);
+	expect(() => Team._parseTactic('5-1-5')).toThrowError(Error);
+	expect(() => Team._parseTactic('5-2-5')).toThrowError(Error);
 });
 
 /**
- * Static method that gets a tactic and parses it to extract the number of defenders, midfielders, and attackers
- * @param {String} tactic A tactic in string format numberBackers-numberMifielders-numberForwarders
- * @returns {Array<Number>} An array of numbers with 3 positions: numberBackers, numberMidfielders, numberForwarders
- * @throws {Error} In case that the tactic is not specified in the format numberBackers-numberMidfielders-numberForwarders
+ * Static method that gets a tactic and parses it to extract the number of defenders, 
+ * midfielders, and attackers
+ * @param {String} tactic A tactic in string format numberBackers-numberMifielders-
+ * numberForwarders
+ * @returns {Array<Number>} An array of numbers with 3 positions: numberBackers, 
+ * numberMidfielders, numberForwarders
+ * @throws {Error} In case that the tactic is not specified in the format numberBackers-
+ * numberMidfielders-numberForwarders
  * @throws {Error} In case that the specified tactic employs more than 10 (+1) players
  *
 static _parseTactic(tactic) {
