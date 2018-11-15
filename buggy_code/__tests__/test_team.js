@@ -156,23 +156,12 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		expect(flag).toBe(true);
 	}
 
-	expect(Team.getRandomTeamTactic()).toBe(
-		tactics[0] ||
-		tactics[1] ||
-		tactics[2] ||
-		tactics[3] ||
-		tactics[4] ||
-		tactics[5] ||
-		tactics[6]
-	);
-
 });
 
 
 
 
-/* test('TEAM TEST createRandomTeam', () => {
+test('TEAM TEST createRandomTeam', () => {
 
-    let random_team=team1.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
-    expect(random_team.).;
+    expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeCloseTo(1000000000,9);
 });
