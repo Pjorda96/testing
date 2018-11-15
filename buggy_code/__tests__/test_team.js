@@ -129,16 +129,34 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		'4-5-1',
 		'5-3-2'
 	];
+	let myMap = new Map();
 
-	expect(tactics[0]).toBe('3-4-3');
-	expect(tactics[1]).toBe('3-5-2');
-	expect(tactics[2]).toBe('3-6-1');
-	expect(tactics[3]).toBe('4-3-3');
-	expect(tactics[4]).toBe('4-4-2');
-	expect(tactics[5]).toBe('4-5-1');
-	expect(tactics[6]).toBe('5-3-2');
+	for (let i = 0; i <= 1000; i++) {
+		let tactic = Team.getRandomTeamTactic();
 
-	expect(team1.getRandomTeamTactic()).toBe(
+		expect(tactics.includes(tactic)).toBe(true);
+
+		if (!myMap.has(tactic)) {
+			myMap.set(tactic, 1);
+		} else {
+			myMap.set(tactic, myMap.get(tactic) + 1);
+		}
+	}
+
+	console.log(myMap);
+
+	for (let tac of tactics) {
+		let flag = undefined;
+		if (myMap.has(tac) && myMap.get(tac) > 0) {
+			flag = true;
+		} else {
+			flag = false;
+		}
+
+		expect(flag).toBe(true);
+	}
+
+	expect(Team.getRandomTeamTactic()).toBe(
 		tactics[0] ||
 		tactics[1] ||
 		tactics[2] ||
@@ -150,20 +168,11 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 
 });
 
-/**
- * Static method that gets a random valid tactic for a team:
- * 3-4-3, 3-5-2, 3-6-1, 4-3-3, 4-4-2, 4-5-1, 5-3-2
- * @returns {String} representing a tactic in the format
- * numberBackers-numberMidFielders-numberForwarders
- *
-static getRandomTeamTactic() {
-	let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
-	let randomIndex = Math.random() * availableTactics.length;
-	return availableTactics[randomIndex];
-}*/
 
-test('TEAM TEST createRandomTeam', () => {
 
-    let random_team=Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
-    expect(random_team.getTeamValue()).toBeCloseTo(1000000000,9);
+
+/* test('TEAM TEST createRandomTeam', () => {
+
+    let random_team=team1.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000);
+    expect(random_team.).;
 });

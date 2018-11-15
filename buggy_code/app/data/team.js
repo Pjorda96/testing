@@ -129,7 +129,7 @@ class Team {
         //Parse tactic elements to numbers
         playersPerPosition = playersPerPosition.map(elem => parseInt(elem));
         //If any of the elements is not an integer, then raise error
-        if (playersPerPosition.any(n => isNaN(n))) {
+        if (playersPerPosition.some(n => isNaN(n))) {
             throw Error('One of the specified positions is not a number');
         }
 
