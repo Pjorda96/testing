@@ -143,6 +143,8 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		}
 	}
 
+	console.log(myMap);
+
 	for (let tac of tactics) {
 		let flag = undefined;
 		if (myMap.has(tac) && myMap.get(tac) > 0) {
@@ -154,7 +156,7 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		expect(flag).toBe(true);
 	}
 
-	expect(team1.getRandomTeamTactic()).toBe(
+	expect(Team.getRandomTeamTactic()).toBe(
 		tactics[0] ||
 		tactics[1] ||
 		tactics[2] ||
