@@ -131,7 +131,7 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 
 	for (let i = 0; i <= 1000; i++) {
 		let tactic = Team.getRandomTeamTactic();
-		
+
 		expect(tactics.includes(tactic)).toBe(true);
 
 		if (!myMap.has(tactic)) {
@@ -152,7 +152,26 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 		expect(flag).toBe(true);
 	}
 
+	expect(team1.getRandomTeamTactic()).toBe(
+		tactics[0] ||
+		tactics[1] ||
+		tactics[2] ||
+		tactics[3] ||
+		tactics[4] ||
+		tactics[5] ||
+		tactics[6]
+	);
 
 });
 
-
+/**
+ * Static method that gets a random valid tactic for a team: 
+ * 3-4-3, 3-5-2, 3-6-1, 4-3-3, 4-4-2, 4-5-1, 5-3-2
+ * @returns {String} representing a tactic in the format 
+ * numberBackers-numberMidFielders-numberForwarders
+ *
+static getRandomTeamTactic() {
+	let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
+	let randomIndex = Math.random() * availableTactics.length;
+	return availableTactics[randomIndex];
+}*/
