@@ -58,7 +58,7 @@ let players = [{
 	"name": "L. Messi",
 	"overall": 93,
 	"value": 105000000
-}]
+}];
 
 //Tests
 test('TEAM TEST CONSTRUCTOR', () => {
@@ -103,7 +103,7 @@ test('TEAM TEST NUMBER OF PLAYERS', () => {
 test('TEAM TEST ADD PLAYER', () => {
 
 	expect(team1.addPlayer(neymar)).toBe(true);
-	expect(f => addPlayer(neymar)).toThrowError(Error);
+  expect(team1.addPlayer(neymar)).toBe(false);
 
 });
 
@@ -181,11 +181,49 @@ test('TEAM TEST PARSE TACTICS', () => {
 	expect(() => Team._parseTactic('5-2-5')).toThrowError(Error);
 });
 
-test('TEAM TEST GET RANDOM PLAYERS', () => {
-	expect(Team._getRandomPlayers(players,2)).toEqual(players);
+/*test('TEAM TEST GET RANDOM PLAYERS', () => {
+	let random = [{
+		"_isBack": false,
+		"_isForward": true,
+		"_isGoalKeeper": false,
+		"_isMidfielder": true,
+		"age": 32,
+		"club": "Real Madrid CF",
+		"country": "Portugal",
+		"id": 20801,
+		"name": "Cristiano Ronaldo",
+		"overall": 94,
+		"value": 95500000
+	}, {
+		"_isBack": false,
+		"_isForward": false,
+		"_isGoalKeeper": false,
+		"_isMidfielder": true,
+		"age": 30,
+		"club": "FC Barcelona",
+		"country": "Argentina",
+		"id": 158023,
+		"name": "L. Messi",
+		"overall": 93,
+		"value": 105000000
+	}, {
+		"_isBack": false,
+		"_isForward": true,
+		"_isGoalKeeper": false,
+		"_isMidfielder": true,
+		"age": 32,
+		"club": "Real Madrid CF",
+		"country": "Portugal",
+		"id": 20801,
+		"name": "Cristiano Ronaldo",
+		"overall": 94,
+		"value": 95500000
+	}];
+
+	expect(Team._getRandomPlayers(arrayPlayers,3)).toEqual(random);
 
 	expect(() => Team._getRandomPlayers(players, 4)).toThrowError(Error);
-});
+});*/
 
 /**
  * Gets a random number of players from a group of players
@@ -210,15 +248,14 @@ static _getRandomPlayers(listPlayers, numberPlayers) {
 }*/
 
 
-/* test('TEAM TEST CREATE RANDOM TEAM', () => {
-
+test('TEAM TEST CREATE RANDOM TEAM', () => {
     expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeLessThan(1000000000);
-    expect(Team.createRandomTeam(insufficient_players,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(delanteros_medios,'3-4-3','randomTeam3',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(defensa_delanteros,'3-4-3','randomTeam4',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(defensa_medios,'3-4-3','randomTeam5',1000000000)).toThrowError(Error);
 
+    expect(() => Team.createRandomTeam(insufficient_players,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
+    expect(() => Team.createRandomTeam(delanteros_medios,'3-4-3','randomTeam3',1000000000)).toThrowError(Error);
+    expect(() => Team.createRandomTeam(defensa_delanteros,'3-4-3','randomTeam4',1000000000)).toThrowError(Error);
+    expect(() => Team.createRandomTeam(defensa_medios,'3-4-3','randomTeam5',1000000000)).toThrowError(Error);
 
-}); */
+});
 
 
