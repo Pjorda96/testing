@@ -14,17 +14,25 @@ let team1 = new Team('team1');
 
 
 
-let cristiano = arrayPlayers[0];
+let cristiano = arrayPlayers[0]; //st
 let messi = arrayPlayers[1];
 let neymar = arrayPlayers[2];
 let keylor = arrayPlayers1[3];
-let ramos = arrayPlayers1[4];
-let bale = arrayPlayers1[8];
-let suarez = arrayPlayers1[9];
+let ramos = arrayPlayers1[4]; //cb (defensa)
+let varane = arrayPlayers1[10]; //cb (defensa)
+let carvajal = arrayPlayers1[11]; //cb (defensa)
+let modric = arrayPlayers1[5]; //cm (medio)
+let casemiro = arrayPlayers1[6]; //cm (medio)
+let kross = arrayPlayers1[7]; //cm (medio)
+let bale = arrayPlayers1[8]; //st (delantero)
+let suarez = arrayPlayers1[9]; //st (delantero)
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
 
-let delanteros_medios=[];
+let insufficient_players = [suarez,ramos];
+let delanteros_medios=[cristiano,bale,suarez,modric,casemiro,kross,cristiano,bale,suarez,modric,casemiro,kross];
+let defensa_medios=[ramos,varane,carvajal,modric,kross,casemiro,ramos,varane,carvajal,modric,kross,casemiro];
+let defensa_delanteros=[ramos,varane,carvajal,cristiano,bale,suarez,ramos,varane,carvajal,cristiano,bale,suarez];
 
 let players = [{
 	"_isBack": false,
@@ -206,7 +214,11 @@ static _parseTactic(tactic) {
 test('TEAM TEST CREATE RANDOM TEAM', () => {
 
     expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeLessThan(1000000000);
-	expect(Team.createRandomTeam(arrayPlayers,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
+    expect(Team.createRandomTeam(insufficient_players,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
+    expect(Team.createRandomTeam(delanteros_medios,'3-4-3','randomTeam3',1000000000)).toThrowError(Error);
+    expect(Team.createRandomTeam(defensa_delanteros,'3-4-3','randomTeam4',1000000000)).toThrowError(Error);
+    expect(Team.createRandomTeam(defensa_medios,'3-4-3','randomTeam5',1000000000)).toThrowError(Error);
+
 
 });
 
