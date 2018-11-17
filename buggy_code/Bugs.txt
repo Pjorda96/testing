@@ -67,3 +67,7 @@ Bug 9:
 
 
 Nota: En el test de player.js pasa por la línea 40 pero no lo indica correctamente, el coverage es de 100%
+Nota: El fragmento de código "if (totalPlayersInTeam !== 11) {
+      throw Error('The team must have exactly 11 players')
+    }" en createRandomTeam en team.js es redundante porque ya se comprueba que el equipo tiene el número de jugadores correcto en _parseTactic.
+    

@@ -182,9 +182,9 @@ class Team {
     let numberForwarders = parseInt(playersPerPosition[2])
     let totalPlayersInTeam = numberBackers + numberForwarders + numberMidfielders + 1
     //_parseTactics verify the tactics have 10 (+1) players
-    /* if (totalPlayersInTeam !== 11) {
+    if (totalPlayersInTeam !== 11) {
       throw Error('The team must have exactly 11 players')
-    } */
+    }
     if (numberBackers < 3) {
       throw Error('At least 3 defenders are required')
     }
