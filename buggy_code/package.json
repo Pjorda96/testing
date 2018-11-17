@@ -4,7 +4,8 @@
   "description": "A sample JavaScript project that is full of errors. This is a perfect practica for Unit and Integration testing",
   "main": "app/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "jest": "node node_modules/jest/bin/jest.js"
   },
   "author": "Victor Sanchez Anguix",
   "license": "ISC",

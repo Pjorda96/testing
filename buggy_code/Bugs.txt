@@ -25,3 +25,65 @@ Eliminar: else if (!isMidfielder(preferred_positions)
 			&& !isForward(preferred_positions)) {
 		return true;
 	}
+
+Bug 4:
+Cambiar: return 0 en team.js getTeamOverallQuality
+por: let OverallQuality=0;
+        let TeamOverallQuality=0;
+        let cont=0;
+        for(let player of this.listPlayers){
+            OverallQuality=OverallQuality+player.overall;
+            cont++;
+        }
+        TeamOverallQuality=(OverallQuality/cont);
+        return TeamOverallQuality;
+
+Bug 5:
+Añadir:
+       if(newTeam.getTeamValue()<=teamValue){
+         return newTeam;
+       }
+A: Funcion createRandomTeam
+
+Bug 6:
+Cambiar: randomIndex en el método getRandomTeamTactic de team.js
+por: let randomIndex = Math.floor(Math.random() * availableTactics.length);
+
+Bug 7:
+Cambiar: any en _parseTactic en team.js
+por: some
+
+Bug 8:
+En _parseTactic en Team.js
+Añadir (antes del return): //If number of players is not 10 (+ GK)
+        //Last method bc need only 3 number elements in playersPerPosition
+        if (playersPerPosition.reduce((x, y) => {
+            return x + y;
+        }, 0) != 10) {
+            throw Error('Only can play 11 players');
+        }
+
+Bug 9:
+En createRandomTeam en team.js
+Añadir: if (listPossiblePlayers.filter(player => {
+        return player.value < teamValue;
+    }).length < 11) {
+        throw Error('Not enough players with the specified value')
+    }
+    después de los primeros if para comprobar si hay suficientes jugadores con un teamValue menor
+
+Bug 10:
+En createRandomLeague en league.js
+Añadir: if (playerData.filter(player => {
+				return player.value < maxTeamValue && player.value > minTeamValue;
+			}).length < 11 * numberOfTeams) {
+			throw Error('Not enough players with the specified value to create the league')
+		}
+    después del primer if para comprobar si hay suficientes jugadores con un valor en el rango introducido
+
+
+Nota: En el test de player.js pasa por la línea 40 pero no lo indica correctamente, el coverage es de 100%
+Nota: El fragmento de código "if (totalPlayersInTeam !== 11) {
+      throw Error('The team must have exactly 11 players')
+    }" en createRandomTeam en team.js es redundante porque ya se comprueba que el equipo tiene el número de jugadores correcto en _parseTactic.
+    
