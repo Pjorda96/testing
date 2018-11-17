@@ -5,7 +5,7 @@ const Team = require('../app/data/team').Team;
 const Player = require('../app/data/player').Player;
 let jsonObjects = readJSONData('./data/sample.json');
 let jsonObjects1 = readJSONData('./data/sample1.json');
-let jsonObjects2= readJSONData('./data/fifa_data.json');
+let jsonObjects2 = readJSONData('./data/fifa_data.json');
 let arrayPlayers = extractDataFromRawJSON(jsonObjects);
 let arrayPlayers1 = extractDataFromRawJSON(jsonObjects1);
 let jsonObjectsFifa = extractDataFromRawJSON(jsonObjects2);
@@ -29,10 +29,10 @@ let suarez = arrayPlayers1[9]; //st (delantero)
 team1.addPlayer(cristiano);
 team1.addPlayer(messi);
 
-let insufficient_players = [suarez,ramos];
-let delanteros_medios=[cristiano,bale,suarez,modric,casemiro,kross,cristiano,bale,suarez,modric,casemiro,kross];
-let defensa_medios=[ramos,varane,carvajal,modric,kross,casemiro,ramos,varane,carvajal,modric,kross,casemiro];
-let defensa_delanteros=[ramos,varane,carvajal,cristiano,bale,suarez,ramos,varane,carvajal,cristiano,bale,suarez];
+let insufficient_players = [suarez, ramos];
+let delanteros_medios = [cristiano, bale, suarez, modric, casemiro, kross, cristiano, bale, suarez, modric, casemiro, kross];
+let defensa_medios = [ramos, varane, carvajal, modric, kross, casemiro, ramos, varane, carvajal, modric, kross, casemiro];
+let defensa_delanteros = [ramos, varane, carvajal, cristiano, bale, suarez, ramos, varane, carvajal, cristiano, bale, suarez];
 
 let players = [{
 	"_isBack": false,
@@ -75,6 +75,7 @@ test('TEAM TEST NAME', () => {
 	expect(team1.getTeamName()).toBe('team1');
 
 });
+
 test('TEAM TEST VALUE', () => {
 
 	expect(team1.getTeamValue()).toBe(200500000);
@@ -103,7 +104,7 @@ test('TEAM TEST NUMBER OF PLAYERS', () => {
 test('TEAM TEST ADD PLAYER', () => {
 
 	expect(team1.addPlayer(neymar)).toBe(true);
-  expect(team1.addPlayer(neymar)).toBe(false);
+	expect(team1.addPlayer(neymar)).toBe(false);
 
 });
 
@@ -171,7 +172,7 @@ test('TEAM TEST GET RANDOM TEAM TACTICS', () => {
 });
 
 test('TEAM TEST PARSE TACTICS', () => {
-	expect(Team._parseTactic('4-3-3')).toEqual([4,3,3]);
+	expect(Team._parseTactic('4-3-3')).toEqual([4, 3, 3]);
 
 	expect(() => Team._parseTactic('S-3-3')).toThrowError(Error);
 	expect(() => Team._parseTactic('3-S-3')).toThrowError(Error);
@@ -226,36 +227,42 @@ test('TEAM TEST PARSE TACTICS', () => {
 });*/
 
 /**
- * Gets a random number of players from a group of players
- * @param {Array<Player>} listPlayers The group of players to select from
- * @param {Number} numberPlayers The total number of players to select
- * @returns {Array<Player>} The group of players selected
- * @throws Error in case that there are not enough players to choose randomly
+ * Static method that gets a tactic and parses it to extract the number of defenders, 
+ * midfielders, and attackers
+ * @param {String} tactic A tactic in string format numberBackers-numberMifielders-
+ * numberForwarders
+ * @returns {Array<Number>} An array of numbers with 3 positions: numberBackers, 
+ * numberMidfielders, numberForwarders
+ * @throws {Error} In case that the tactic is not specified in the format numberBackers-
+ * numberMidfielders-numberForwarders
+ * @throws {Error} In case that the specified tactic employs more than 10 (+1) players
  *
-static _getRandomPlayers(listPlayers, numberPlayers) {
-	if (listPlayers.length < numberPlayers) {
-		throw Error('Insufficient players to make a team');
+static _parseTactic(tactic) {
+	//Split the string using the - character
+	let playersPerPosition = tactic.split('-');
+	//If more or less than 3 positions, the tactic is in incorrect format
+	if (playersPerPosition.length !== 3) {
+		throw Error('Tactics may only take 3 positions and got ' + playersPerPosition + ' with ' +
+			playersPerPosition.length + ' elements');
 	}
-	let selectedPlayers = new Array(); //Array used to put chosen players
-	let copyListPlayers = listPlayers.slice(); //Array that copies the original pool of players. Used to dynamically remove players
+	//Parse tactic elements to numbers
+	playersPerPosition = playersPerPosition.map(elem => parseInt(elem));
+	//If any of the elements is not an integer, then raise error
+	if (playersPerPosition.some(n => isNaN(n))) {
+		throw Error('One of the specified positions is not a number');
+	}
 
-	for (let playersAdded = 0; playersAdded < numberPlayers; playersAdded++) { //For each random player to select
-		let indexPlayer = Math.floor(Math.random() * copyListPlayers.length); //Index of the random player to be chosen
-		let player = copyListPlayers[indexPlayer];
-		selectedPlayers.push(player);
-	}
-	return selectedPlayers;
+	return playersPerPosition;
 }*/
 
 
 test('TEAM TEST CREATE RANDOM TEAM', () => {
-    expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeLessThan(1000000000);
 
-    expect(() => Team.createRandomTeam(insufficient_players,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
-    expect(() => Team.createRandomTeam(delanteros_medios,'3-4-3','randomTeam3',1000000000)).toThrowError(Error);
-    expect(() => Team.createRandomTeam(defensa_delanteros,'3-4-3','randomTeam4',1000000000)).toThrowError(Error);
-    expect(() => Team.createRandomTeam(defensa_medios,'3-4-3','randomTeam5',1000000000)).toThrowError(Error);
+	expect(Team.createRandomTeam(jsonObjectsFifa, '3-4-3', 'randomTeam1', 1000000000).getTeamValue()).toBeLessThan(1000000000);
+
+	//expect(() => Team.createRandomTeam(jsonObjectsFifa, '4-5-3', 'randomTeam2', 1000000000)).toThrowError(Error);
+	expect(() => Team.createRandomTeam(jsonObjectsFifa, '1-6-3', 'randomTeam3', 1000000000)).toThrowError(Error);
+	expect(() => Team.createRandomTeam(jsonObjectsFifa, '4-2-4', 'randomTeam4', 1000000000)).toThrowError(Error);
+	expect(() => Team.createRandomTeam(jsonObjectsFifa, '5-5-0', 'randomTeam5', 1000000000)).toThrowError(Error);
 
 });
-
-
