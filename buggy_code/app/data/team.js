@@ -175,12 +175,15 @@ class Team {
      * @throws {Error} In case that the tactic specifies less or more than 11 players, or if an invalid tactic is provided (<3 defenders, <3 midfielders, <1 attacker)
      */
     static createRandomTeam(listPossiblePlayers, tactic, teamName, teamValue) {
-        console.log('array de jugadores '+listPossiblePlayers.length);
         let playersPerPosition = Team._parseTactic(tactic);
         let numberBackers = parseInt(playersPerPosition[0]);
         let numberMidfielders = parseInt(playersPerPosition[1]);
         let numberForwarders = parseInt(playersPerPosition[2]);
         let totalPlayersInTeam = numberBackers + numberForwarders + numberMidfielders + 1;
+        console.log('totalPlayersInTeam '+totalPlayersInTeam);
+        console.log('numberBackers '+numberBackers);
+        console.log('numberMidfielders '+numberMidfielders);
+        console.log('numberForwarders '+numberForwarders);
         if (totalPlayersInTeam !== 11) {
             throw Error('The team must have exactly 11 players');
         }

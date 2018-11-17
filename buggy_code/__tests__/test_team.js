@@ -103,6 +103,7 @@ test('TEAM TEST NUMBER OF PLAYERS', () => {
 test('TEAM TEST ADD PLAYER', () => {
 
 	expect(team1.addPlayer(neymar)).toBe(true);
+    expect(team1.addPlayer(neymar)).toBe(false);
 	expect(f => addPlayer(neymar)).toThrowError(Error);
 
 });
@@ -214,12 +215,19 @@ static _parseTactic(tactic) {
 test('TEAM TEST CREATE RANDOM TEAM', () => {
 
     expect(Team.createRandomTeam(jsonObjectsFifa,'3-4-3','randomTeam1',1000000000).getTeamValue()).toBeLessThan(1000000000);
-    expect(Team.createRandomTeam(insufficient_players,'3-4-3','randomTeam2',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(delanteros_medios,'3-4-3','randomTeam3',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(defensa_delanteros,'3-4-3','randomTeam4',1000000000)).toThrowError(Error);
-    expect(Team.createRandomTeam(defensa_medios,'3-4-3','randomTeam5',1000000000)).toThrowError(Error);
 
+    expect(() => {Team.createRandomTeam(insufficient_players,'4-5-3','randomTeam2',1000000000)}).toThrowError(Error);
+
+    expect(() => {Team.createRandomTeam(delanteros_medios,'1-7-3','randomTeam3',1000000000)}).toThrowError(Error);
+
+    expect(() => {Team.createRandomTeam(defensa_delanteros,'4-3-3','randomTeam4',1000000000)}).toThrowError(Error);
+
+    expect(() => {Team.createRandomTeam(defensa_medios,'4-3-3','randomTeam5',1000000000)}).toThrowError(Error);
 
 });
+/*
+test('TEAM TEST GET RANDOM PLAYERS', () => {
 
+    expect(Team._getRandomPlayers(delanteros_medios,4)).toBe();
 
+});*/
