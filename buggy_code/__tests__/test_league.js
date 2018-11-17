@@ -31,47 +31,20 @@ test('TEAM TEST CREATES CALENDAR', () => {
 });
 
 test('TEAM TEST CREATES RANDOM LEAGUE', () => {
-	//let league = League.createRandomLeague(arrayPlayers,3,1,10000000000000000);
+	let league = League.createRandomLeague(arrayPlayers, 3, 1, 10000000000000000);
 
+	expect(league.listTeams.length).toBe(3);
+	for (let i = 0; i <= league.listTeams.length-1; i++) {
+		expect(league.listTeams[i].teamValue).toBeLessThanOrEqual(10000000000000000);
+		expect(league.listTeams[i].teamValue).toBeGreaterThanOrEqual(1);
+	}
 
-	//expect(league.listTeams.length).toBe(1);
-	//expect(league.listTeams[0]).toBe('test');
-
-	//expect(f => League.createRandomLeague(arrayPlayers, 100, 1, 100000000)).toThrowError(Error);
+	expect(f => League.createRandomLeague(arrayPlayers, 10000, 1, 100000000)).toThrowError(Error);
+	expect(f => League.createRandomLeague(arrayPlayers, 1, 100000000, 100000001)).toThrowError(Error);
+	expect(f => League.createRandomLeague(arrayPlayers, 1, 0, 2)).toThrowError(Error);
 });
 
-/**
- * Creates a League object based on a pool of players, a number of teams to compete, 
- * and a minimum and maximum team value
- * @param {Array<Player>} playerData An array of player profiles that will be selected to 
- * generate the teams
- * @param {Number} numberOfTeams An integer that delimits the number of teams that will 
- * compete in the league
- * @param {Number} minTeamValue The minimum amount of euros that will be spent by clubs 
- * on forming the team
- * @param {Number} maxTeamValue The maximum amount of euros that will be spent by clubs 
- * on forming the team
- * @returns {League} The league that has been created
- * @throws {Error} In case that there are not enough players to create the desired number 
- * of teams, or in case that the minimum team value is higher than the maximum team value 
- *
-static createRandomLeague(playerData, numberOfTeams, minTeamValue, maxTeamValue) {
-
-	if (playerData.length < numberOfTeams * 11) {
-		throw Error('Not enough players to create the league');
-	}
-
-	let newLeague = new League(numberOfTeams);
-	let playersInLeague = new Set();
-	for (let i = 0; i < numberOfTeams; i++) { //For each team to be created
-		//Filter players that are currently available
-		let playersAvailable = playerData.filter(player => !playersInLeague.has(player));
-		//Select random team budget between the minimum and maximum specified as parameter
-		let teamValue = Math.random() * (maxTeamValue - minTeamValue) + minTeamValue;
-		//Create the team randomly
-		let team = Team.createRandomTeam(playersAvailable, Team.getRandomTeamTactic(), "Team" + i, teamValue);
-		//Add the team to the league
-		newLeague.addTeam(team);
-	}
-	return newLeague;
-}*/
+test('TEST 50', () => {
+	let nota = 10
+	expect(nota).toBe(10);
+});

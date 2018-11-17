@@ -195,6 +195,12 @@ class Team {
       throw Error('At least 1 forward player is required')
     }
 
+    if (listPossiblePlayers.filter(player => {
+        return player.value < teamValue;
+    }).length < 11) {
+        throw Error('Not enough players with the specified value')
+    }
+
         /*Infinite loop employed to generate random teams. It will break in case that the team
         generated takes less than the maximum budget*/
         while (true) {
@@ -220,10 +226,9 @@ class Team {
 
                 newTeam.addPlayers(selectedPlayers);
             }
-            if(newTeam.getTeamValue()<=teamValue){
+            if(newTeam.getTeamValue() <= teamValue){
                 return newTeam;
             }
-
 
         }
 

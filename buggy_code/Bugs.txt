@@ -64,6 +64,22 @@ Añadir (antes del return): //If number of players is not 10 (+ GK)
         }
 
 Bug 9:
+En createRandomTeam en team.js
+Añadir: if (listPossiblePlayers.filter(player => {
+        return player.value < teamValue;
+    }).length < 11) {
+        throw Error('Not enough players with the specified value')
+    }
+    después de los primeros if para comprobar si hay suficientes jugadores con un teamValue menor
+
+Bug 10:
+En createRandomLeague en league.js
+Añadir: if (playerData.filter(player => {
+				return player.value < maxTeamValue && player.value > minTeamValue;
+			}).length < 11 * numberOfTeams) {
+			throw Error('Not enough players with the specified value to create the league')
+		}
+    después del primer if para comprobar si hay suficientes jugadores con un valor en el rango introducido
 
 
 Nota: En el test de player.js pasa por la línea 40 pero no lo indica correctamente, el coverage es de 100%

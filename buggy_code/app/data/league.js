@@ -52,6 +52,12 @@ class League {
 			throw Error('Not enough players to create the league');
 		}
 
+		if (playerData.filter(player => {
+				return player.value < maxTeamValue && player.value > minTeamValue;
+			}).length < 11 * numberOfTeams) {
+			throw Error('Not enough players with the specified value to create the league')
+		}
+
 		let newLeague = new League(numberOfTeams);
 		let playersInLeague = new Set();
 		for (let i = 0; i < numberOfTeams; i++) { //For each team to be created

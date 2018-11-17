@@ -197,48 +197,19 @@ test('TEAM TEST GET RANDOM PLAYERS', () => {
 		"value": 95500000
 	}];
 
-	expect(Team._getRandomPlayers(random,1)).toEqual(random);
+	expect(Team._getRandomPlayers(random, 1)).toEqual(random);
+	expect(Team._getRandomPlayers(arrayPlayers, 3).length).toBe(3);
 
 	expect(() => Team._getRandomPlayers(players, 4)).toThrowError(Error);
 });
 
-/**
- * Static method that gets a tactic and parses it to extract the number of defenders, 
- * midfielders, and attackers
- * @param {String} tactic A tactic in string format numberBackers-numberMifielders-
- * numberForwarders
- * @returns {Array<Number>} An array of numbers with 3 positions: numberBackers, 
- * numberMidfielders, numberForwarders
- * @throws {Error} In case that the tactic is not specified in the format numberBackers-
- * numberMidfielders-numberForwarders
- * @throws {Error} In case that the specified tactic employs more than 10 (+1) players
- *
-static _parseTactic(tactic) {
-	//Split the string using the - character
-	let playersPerPosition = tactic.split('-');
-	//If more or less than 3 positions, the tactic is in incorrect format
-	if (playersPerPosition.length !== 3) {
-		throw Error('Tactics may only take 3 positions and got ' + playersPerPosition + ' with ' +
-			playersPerPosition.length + ' elements');
-	}
-	//Parse tactic elements to numbers
-	playersPerPosition = playersPerPosition.map(elem => parseInt(elem));
-	//If any of the elements is not an integer, then raise error
-	if (playersPerPosition.some(n => isNaN(n))) {
-		throw Error('One of the specified positions is not a number');
-	}
-
-	return playersPerPosition;
-}*/
-
 
 test('TEAM TEST CREATE RANDOM TEAM', () => {
-
 	expect(Team.createRandomTeam(jsonObjectsFifa, '3-4-3', 'randomTeam1', 1000000000).getTeamValue()).toBeLessThan(1000000000);
 
-	//expect(() => Team.createRandomTeam(jsonObjectsFifa, '4-5-3', 'randomTeam2', 1000000000)).toThrowError(Error);
 	expect(() => Team.createRandomTeam(jsonObjectsFifa, '1-6-3', 'randomTeam3', 1000000000)).toThrowError(Error);
 	expect(() => Team.createRandomTeam(jsonObjectsFifa, '4-2-4', 'randomTeam4', 1000000000)).toThrowError(Error);
 	expect(() => Team.createRandomTeam(jsonObjectsFifa, '5-5-0', 'randomTeam5', 1000000000)).toThrowError(Error);
+	expect(() => Team.createRandomTeam(jsonObjectsFifa, '4-3-3', 'randomTeam6', 10)).toThrowError(Error);
 
 });
