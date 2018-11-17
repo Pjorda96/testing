@@ -194,9 +194,6 @@ class Team {
     if (numberForwarders < 1) {
       throw Error('At least 1 forward player is required')
     }
-    /*if (listPossiblePlayers.length >= 11) {
-      throw Error('The team must have more than 11 or 11 players in array')
-    }*/
 
         /*Infinite loop employed to generate random teams. It will break in case that the team
         generated takes less than the maximum budget*/
